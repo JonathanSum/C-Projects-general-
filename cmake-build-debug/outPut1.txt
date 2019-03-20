@@ -1,0 +1,40 @@
+Student Grade Summary
+---------------------
+
+ENGLISH CLASS
+
+Student Name                         Test Avg     Grade
+----------------------------------------------------------------
+James T., Kirk                          15.87        F
+Marvin, Dipwart                         18.17        F
+Axelrod, Polinski                       11.30        F
+Class Average                           15.11        F
+----------------------------------------------------------------
+
+
+HISTORY CLASS
+
+Student Name                         Test Avg     Grade
+----------------------------------------------------------------
+Joe, Schmuckatelli                      54.33        F
+
+Monica, Lewinsky                        43.00        F
+
+Class Average                           48.67        F
+----------------------------------------------------------------
+
+
+MATH CLASS
+
+Student Name                         Test Avg     Grade
+----------------------------------------------------------------
+Bugs, Bunny                             66.00        D
+
+Billy Joe Bob, Phebus                   49.33        F
+
+Jimmy, Crack Corn                       68.33        D
+
+Class Average                           61.22        D
+----------------------------------------------------------------
+
+
