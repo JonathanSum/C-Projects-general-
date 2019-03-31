@@ -24,17 +24,39 @@
 
 using namespace std;
 
+//void add_user(istream &infile, const string &name, const string &pass){
+//    ifstream infile("t1.txt");
+//    string s;
+//    istream(' ');
+//    while( getline(infile,s, ' ') )
+//    {
+//        cout << "Read from file: " << s << endl;
+//        if(s=="end"){
+//            break;
+//        }
+//    }
+//}
 
 
-//  This assigment is for building a message board that can
-//  store and read message by logged in user
+
 int main(int argc, char *argv[]) {
     BBoard started = BBoard();
-
+//    BBoard x = BBoard();
+//    string str="t1.txt";
+//    x.setup(str);
     string fileName = argv[1];
-
+//    cout<<"Debug file name: "<<fileName<<endl;
     started.setup(fileName);
 
 
     return 0;
 }
+
+
+
+
+
+
+
+
+

@@ -26,13 +26,14 @@ using namespace std;
 
 
 
-//  This assigment is for building a message board that can
-//  store and read message by logged in user
+
 int main(int argc, char *argv[]) {
     BBoard started = BBoard();
-
+    BBoard x = BBoard();
+//    string str="users.txt";
+//    x.setup(str);
     string fileName = argv[1];
-
+//    cout<<"Debug file name: "<<fileName<<endl;
     started.setup(fileName);
 
 
