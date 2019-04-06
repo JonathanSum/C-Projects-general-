@@ -1,1 +1,0 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/3A.dir/main.cpp.o CMakeFiles/3A.dir/bboard.cpp.o CMakeFiles/3A.dir/user.cpp.o CMakeFiles/3A.dir/message.cpp.o  -o 3A.exe -Wl,--out-implib,lib3A.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
