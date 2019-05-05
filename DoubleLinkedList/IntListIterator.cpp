@@ -1,213 +1,188 @@
 /*********************************************
  *   Author         : Jonathan Sum
- *   Assignment     : Lab 12 - The Rule of 3
+ *   Assignment     : Assignment 7 - Linked List Recursion
  *   SECTION        : CS 003A
- *   Due Date       : 4/11/19
+ *   Due Date       : 5/01/19
  *   ________________________________________________
  *   Goals
- *   Use rule of 3.
+ *    Add some additional recursive functions to your
+ *    IntList class as well as make sure the Big 3 are defined.
 ***********************************************/
 
-#include "music_collection.h"
-
+#include "IntListIterator.h"
 /***************************************************
  *
- *   constructor Music_collection(): Class Music_collection
+ *   Method IntListIterator():Class IntListIterator
  ________________________________________________
- *   This constructor create a default
+ *   This is a constructor
+ *   for  *   Initialize the iterator.
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   an object is created
+ *   created a constructor
 *****************************************************/
-Music_collection::Music_collection() {
-    max=100;
-    number =0;
-    collection= new Tune[max];
-}
-/***************************************************
- *
- *   constructor Music_collection(int n): Class Music_collection
- ________________________________________________
- *   This constructor create a object
- ________________________________________________
- *   PRE-CONDITIONS
- *   Same
- *   POST-CONDITIONS
- *   an object is created
-*****************************************************/
-Music_collection::Music_collection(int n) {
-    max =n;
-    number =0;
-    collection= new Tune[max];
-}
-/***************************************************
- *
- *   constructor Music_collection(const Music_collection &m): Class Music_collection
- ________________________________________________
- *   This constructor create an object
- ________________________________________________
- *   PRE-CONDITIONS
- *   Same
- *   POST-CONDITIONS
- *   an object is created
-*****************************************************/
-Music_collection::Music_collection(const Music_collection &m) {
-
-
-    this->collection = new Tune[m.max];
-    for(int i = 0; i<m.number; i++){
-        collection[i]=m.collection[i];
-    }
-    max=m.max;
-    number = m.number;
-}
-/***************************************************
- *
- *   Method add_tune(const Tune &t): Class Music_collection
- ________________________________________________
- *   It adds tune
- ________________________________________________
- *   PRE-CONDITIONS
- *   Same
- *   POST-CONDITIONS
- *   Tune is added
-*****************************************************/
-bool Music_collection::add_tune(const Tune &t) {
-
-    if(number+1>max){
-        return false;
-    }else{
-        //add the tune here
-        collection[number]=t;
-        number++;
-        return true;
-    }
-
+IntListIterator::IntListIterator() {
+    current = nullptr;
 }
 
 /***************************************************
  *
- *   Method add_tune(const Tune &t): Class Music_collection
+ *   Method IntList(const IntList &list):Class IntListIterator
  ________________________________________________
- *   It adds tune in to certain index
+ *   This is a constructor
+ *   for  *   Initialize the iterator by ptr.
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   Tune is added
+ *   created a constructor
 *****************************************************/
-bool Music_collection::set_tune(int index, const Tune &t) {
-    if(index < number ){
-        collection[index]=t;
-    }
-
-
+IntListIterator::IntListIterator(IntNode *ptr) {
+    current = ptr;
 }
 /***************************************************
  *
- *   Method &Music_collection::operator=(const Music_collection &m)
- *   : Class Music_collection
+ *   Method operator*() : Class IntListIterator
  ________________________________________________
- *   It override assign operator(=)
+ *   It overrides the *
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   assign operator(=) overrided
+ *   a current node's data is returned
 *****************************************************/
-Music_collection &Music_collection::operator=(const Music_collection &m) {
-
-
-
-    if(this==&m){
-        return *this;
+int IntListIterator::operator*() {
+    if(current!= nullptr){
+        return current->data;
     }
+}
 
-
-    this->collection = new Tune[m.max];
-    for(int i = 0; i<m.number; i++){
-        collection[i]=m.collection[i];
+/***************************************************
+ *
+ *   Method operator++() : Class IntListIterator
+ ________________________________________________
+ *   It overrides the ++
+ ________________________________________________
+ *   PRE-CONDITIONS
+ *   Same
+ *   POST-CONDITIONS
+ *   a current node's data is returned that is incremented by one
+*****************************************************/
+IntListIterator IntListIterator:: operator++() {
+    if(current){
+        current=current->next;
     }
-    max=m.max;
-    number = m.number;
-
     return *this;
 }
 /***************************************************
  *
- *   Destructor :~Music_collection(): Class Music_collection
+ *   Method operator++(int): Class IntListIterator
  ________________________________________________
- *   It clean the stored data of the object
+ *   It overrides the ++
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   clean the stored data of the object
+ *   a current node's data is returned that is incremented by one
 *****************************************************/
-Music_collection::~Music_collection() {
-    delete[] collection;
-    collection = nullptr;
+IntListIterator IntListIterator:: operator++(int) {
+    IntListIterator it = *this;
+    ++*this;
+    return it;
 }
 /***************************************************
  *
- *   Method ostream &operator<<(ostream &out, const Music_collection &m)
- *   : Class Music_collection
+ *   operator==(const IntListIterator &right) const
  ________________________________________________
- *   It override ostream operator(<<)
+ *   It overrides the ==
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   ostream operator(<<) overrided
+ *   a boolean is returned if two IntListIterator Objects
+ *   are same
 *****************************************************/
-ostream &operator<<(ostream &out, const Music_collection &m) {
-    for(int i =0; i<m.number; i++){
-        out <<m.collection[i].get_title()<<endl;
-    }
+/***************************************************
+ *
+ *   Method operator==(const IntListIterator &right) const
+ ________________________________________________
+ *   It overrides the ==
+ ________________________________________________
+ *   PRE-CONDITIONS
+ *   Same
+ *   POST-CONDITIONS
+ *   returned a boolean on two objects are equaled or not
+*****************************************************/
+bool IntListIterator::operator==(const IntListIterator &right) const {
+    return current ==right.current;
+}
+/***************************************************
+ *
+ *   operator!=(const IntListIterator &right) const
+ ________________________________________________
+ *   It overrides the !=
+ ________________________________________________
+ *   PRE-CONDITIONS
+ *   Same
+ *   POST-CONDITIONS
+ *   a boolean is returned if two IntListIterator Objects
+ *   are not same
+*****************************************************/
+/***************************************************
+ *
+ *   Method operator!=(const IntListIterator &right) const
+ ________________________________________________
+ *   It overrides the !=
+ ________________________________________________
+ *   PRE-CONDITIONS
+ *   Same
+ *   POST-CONDITIONS
+ *   returned a boolean on two objects are not equaled or not
+*****************************************************/
+bool IntListIterator::operator!=(const IntListIterator &right) const {
 
-    return out;
+    return current !=right.current;
 }
 /***************************************************
  *
- *   constructor Tune()
+ *   Method operator--: Class IntListIterator
  ________________________________________________
- *   This constructor create a object
+ *   It overrides the --
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   an object is created
+ *   a current node's data is returned that is decremented by one
 *****************************************************/
-Tune::Tune() {
-    title="";
+
+IntListIterator IntListIterator::operator--() {
+    if(current){
+        current=current->prev;
+    }
+    return *this;
 }
 /***************************************************
  *
- *   constructor Tune(const string &n)
+ *   Method IntListIterator::operator--(int)
  ________________________________________________
- *   This constructor create a object
+ *   It overrides the --
  ________________________________________________
  *   PRE-CONDITIONS
  *   Same
  *   POST-CONDITIONS
- *   an object is created
+ *   a current node's data is returned that is decremented by one
 *****************************************************/
-Tune::Tune(const string &n) {
-    title=n;
+
+IntListIterator IntListIterator::operator--(int) {
+    IntListIterator it = *this;
+    --*this;
+    return it;
 }
-/***************************************************
- *
- *   Method &Tune::get_title() const : Class Tune
- ________________________________________________
- *   It return the title of the Tune
- ________________________________________________
- *   PRE-CONDITIONS
- *   Same
- *   POST-CONDITIONS
- *   Title of the Tune is returned
-*****************************************************/
-const string &Tune::get_title() const {
-    return title;
-}
+
+
+
+
+
+
+
